@@ -1,0 +1,85 @@
+.progress-wrapper {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 10%;
+}
+
+.progress-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  transition: transform 0.3s ease; /* Added transition for smoother effect */
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.progress-item::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: calc(100% - 20px); /* Adjusted width */
+  top: 20px;
+  left: 10px; /* Adjusted position */
+  z-index: 2;
+}
+
+.progress-item::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: calc(100% - 20px); /* Adjusted width */
+  top: 20px;
+  right: 10px; /* Adjusted position */
+  z-index: 2;
+}
+
+.progress-item .progress-counter {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-bottom: 6px;
+  cursor: pointer; /* Added cursor pointer for interaction */
+  transition: background-color 0.3s ease; /* Added transition for smoother effect */
+}
+
+.progress-item.active {
+  font-weight: bold;
+}
+
+.progress-item.completed .progress-counter {
+  background-color: #32b1fd;
+}
+
+.progress-item:hover .progress-counter {
+  background-color: #4da8da; /* Adjusted hover background color */
+}
+
+.progress-item.completed::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #32b1fd;
+  width: calc(100% - 20px); /* Adjusted width */
+  top: 20px;
+  left: 10px; /* Adjusted position */
+  z-index: 3;
+}
+
+.progress-item:first-child::before {
+  content: none;
+}
+
+.progress-item:last-child::after {
+  content: none;
+}
